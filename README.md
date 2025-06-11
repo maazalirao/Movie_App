@@ -30,12 +30,27 @@ A modern, responsive movie streaming application built with React and Vite. Brow
    npm install
    ```
 
-3. **Start the development server**
+3. **🔒 Set up environment variables (IMPORTANT!)**
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+   
+   # Edit .env and add your actual TMDB API key
+   # Get your API key from: https://www.themoviedb.org/settings/api
+   ```
+   
+   Your `.env` file should look like:
+   ```
+   VITE_TMDB_API_KEY=your_actual_tmdb_api_key_here
+   VITE_TMDB_BASE_URL=https://api.themoviedb.org/3
+   ```
+
+4. **Start the development server**
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    - Go to `http://localhost:5173`
    - Start browsing and watching movies!
 
@@ -88,6 +103,18 @@ src/
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 
+## 🔒 Security
+
+This project follows security best practices:
+
+- **Environment Variables**: API keys are stored in environment variables, not hardcoded
+- **Git Ignore**: Sensitive files like `.env` are excluded from version control
+- **No Exposed Secrets**: No API keys or sensitive data in the source code
+
+For detailed security guidelines, see [`SECURITY.md`](./SECURITY.md).
+
+**⚠️ Important**: Never commit your `.env` file or expose API keys in your code!
+
 ## Contributing 🤝
 
 This is a learning project! Feel free to:
@@ -96,6 +123,8 @@ This is a learning project! Feel free to:
 - Fix bugs
 - Add more video sources
 - Enhance the video player
+
+**Security Note**: When contributing, ensure you follow the security guidelines in `SECURITY.md`.
 
 ## License 📄
 

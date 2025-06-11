@@ -1,10 +1,15 @@
-const API_KEY = "eca47c9cf1583cab2e2f9d13b897c494"
-const BASE_URL = "https://api.themoviedb.org/3";
+import { buildTmdbUrl } from '../config/api.js';
 
 // Function to get popular movies
 export const getPopularMovies = async () => {
     try {
-        const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+        const url = buildTmdbUrl('/movie/popular');
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
         return data.results;
     } catch (error) {
@@ -16,7 +21,13 @@ export const getPopularMovies = async () => {
 // Function to search for movies by query
 export const searchMovie = async (query) => {
     try {
-        const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+        const url = buildTmdbUrl('/search/movie', { query: encodeURIComponent(query) });
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
         return data.results;
     } catch (error) {
@@ -28,7 +39,13 @@ export const searchMovie = async (query) => {
 // Function to fetch movies (alias for getPopularMovies)
 export const fetchMovies = async () => {
     try {
-        const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+        const url = buildTmdbUrl('/movie/popular');
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
         return data; // Return the full response object with results property
     } catch (error) {

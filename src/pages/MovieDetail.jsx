@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import VideoPlayer from '../components/VideoPlayer';
 import { getMovieVideoUrl } from '../services/videoApi';
+import { buildTmdbUrl } from '../config/api';
 
 // Movie detail page where users can watch movies
 function MovieDetail() {
@@ -25,10 +26,8 @@ function MovieDetail() {
         setLoading(true);
         
         // Get movie details from TMDB API
-        const API_KEY = "eca47c9cf1583cab2e2f9d13b897c494";
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
-        );
+        const url = buildTmdbUrl(`/movie/${id}`);
+        const response = await fetch(url);
         const movieData = await response.json();
         
         setMovie(movieData);
