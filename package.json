@@ -1,7 +1,9 @@
 {
-  "name": "movieapp",
+  "name": "mazflix",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "MazFlix - Your Ultimate Classic Movie Streaming Experience",
+  "author": "Maz",
   "type": "module",
   "scripts": {
     "dev": "vite",

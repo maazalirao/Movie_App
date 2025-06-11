@@ -24,3 +24,15 @@ export const searchMovie = async (query) => {
         return [];
     }
 }
+
+// Function to fetch movies (alias for getPopularMovies)
+export const fetchMovies = async () => {
+    try {
+        const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+        const data = await response.json();
+        return data; // Return the full response object with results property
+    } catch (error) {
+        console.error("Error fetching movies:", error);
+        return { results: [] };
+    }
+};
